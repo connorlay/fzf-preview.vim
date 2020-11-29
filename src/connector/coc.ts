@@ -68,7 +68,7 @@ const cocLocationToLocation = async (locations: Array<CocLocation>): Promise<Arr
   return (
     await Promise.all(
       locations.map(async (location) => {
-        const lineNumber = location.range.start.line + 1
+        const lineNumber = location.range.start.line // TODO: why increment the line number? + 1
         const absoluteFilePath = dropFileProtocol(location.uri)
         const relativeFilePath = filePathToRelativeFilePath(absoluteFilePath, currentPath)
         if (relativeFilePath == null) {
